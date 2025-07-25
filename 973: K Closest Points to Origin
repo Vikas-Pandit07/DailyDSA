@@ -1,0 +1,42 @@
+Day2: K Closest Points to Origin
+
+class Solution {
+    public int[][] kClosest(int[][] points, int k) {
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>(
+            (a,b) -> (b[0] * b[0] + b[1] * b[1]) - (a[0] * a[0] + a[1] * a[1])
+        );
+        
+        for (int[] point : points) {
+            maxHeap.offer(point);
+
+            if (maxHeap.size() > k) {
+                maxHeap.poll();
+            }
+        }
+
+        int[][] result = new int[k][2];
+        for (int i = 0; i < k; i++) {
+            result[i] = maxHeap.poll();
+        }
+
+        return result;
+    }
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[][] points = new int[n][2];
+
+        for(int i = 0; i < n; i++) {
+            points[i][0] = sc.nextInt();       
+            points[i][1] = sc.nextInt(); 
+        }
+
+        int k = sc.nextInt();
+        Solution obj = new Solution();
+        int[][] result = obj.kClosest(points, k);
+        System.out.println("Input: points = " +Arrays.deepToString(result) + ", k = " + k);
+        System.out.println("Output: " + result);
+    }
+}
