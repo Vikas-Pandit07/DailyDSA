@@ -10,3 +10,7 @@ Kth Largest Element in an Array
 Day2: 
 Problem No: 973
 K Closest Points to Origin
+
+Day3:
+Problem No: 1
+Two Sum
